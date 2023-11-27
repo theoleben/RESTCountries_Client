@@ -1,0 +1,15 @@
+/* Correct way for modifying a MUI state class of a component */
+.MuiSlider-thumb.Mui-active {
+  background-color: darkgoldenrod;
+}
+
+.MuiSlider-thumb.Mui-focusVisible {
+  border: 2px solid rgb(253, 192, 255);
+}
+
+/* This code will impact all components. We have to be as precise as possible  */
+
+/* Every components that has the state class will have the background colored */
+/* .Mui-focusVisible {
+    background-color: olivedrab;
+} */

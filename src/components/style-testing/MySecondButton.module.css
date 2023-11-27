@@ -1,0 +1,5 @@
+/* For some reasons, it overrides the initial .MuiButton-root define in the MyButton.module.css.
+What is the order of the overriding ? From the older to newest component ?  */
+/* :global .MuiButton-root {
+  color: green;
+} */
