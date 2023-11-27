@@ -1,0 +1,40 @@
+.header {
+  background-color: lightcoral;
+}
+
+:global .MuiPaper-root {
+  background-color: green;
+}
+
+:global .MuiToolbar-root {
+  background-color: pink;
+}
+
+/* .header :global .MuiToolbar-root {
+  background-color: green; */
+/* justify-content: space-evenly; */
+/* } */
+
+.header :global a {
+  text-decoration: none;
+  /* color: green; */
+  font-size: 16px;
+}
+
+/* Solution 1 */
+.header :global .active {
+  color: orange;
+}
+
+/* Solution 2 */
+/* .header :global .activate {
+  color: blue;
+} */
+
+.header :global .MuiButtonBase-root {
+  color: green;
+}
+
+:global .MuiList-root {
+  background-color: brown;
+}
