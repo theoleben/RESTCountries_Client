@@ -1,57 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
-import data from "./data/countries";
+import data from "./data/countries_all_v1";
+import countries_all from "./data/countries_all_v2";
+import { buildMap, serializeMap } from "./utilities/map";
 
 function App() {
-  // console.log("data:", data);
-  const map_regions = new Map();
-
   console.log("data.length: ", data.length);
+  console.log("countries_all.length: ", countries_all.length);
 
-  data.forEach((country) => {
-    // console.log(map_regions);
-    // console.log("name:", country.name.common);
-    // console.log("region:", country.region);
+  const countriesMap = buildMap(data);
+  console.log("countriesMap:", countriesMap);
 
-    // Case where the region doesn't exists
-    if (!map_regions.has(country.region)) {
-      // // Antarctic has no subregions
-      if (country.region === "Antarctic") {
-        map_regions.set(country.region, [{ name: country.name.common }]);
-      } else {
-        // Creation of the subregion Map()
-        const subregion = new Map();
-        subregion.set(country.subregion, [{ name: country.name.common }]);
-
-        // Set map_regions with the updated "subregion" map
-        map_regions.set(country.region, subregion);
-      }
-
-      // Case where the region exists
-    } else if (map_regions.has(country.region)) {
-      if (country.region === "Antarctic") {
-        const countries = map_regions.get(country.region);
-        countries.push({ name: country.name.common });
-      } else {
-        // Get subregion map
-        const retrievedRegion = map_regions.get(country.region);
-
-        // Case where the subregion doesn't exists
-        if (!retrievedRegion.has(country.subregion)) {
-          retrievedRegion.set(country.subregion, [
-            { name: country.name.common },
-          ]);
-        }
-        // Case where the subregion exists => update list of countries
-        else if (retrievedRegion.has(country.subregion)) {
-          const countries = retrievedRegion.get(country.subregion);
-          countries.push({ name: country.name.common });
-        }
-      }
-    }
-  });
-
-  console.log("map_regions:", map_regions);
+  const serializedMap = serializeMap(countriesMap);
+  console.log(serializedMap);
+  console.log("serializedMap stringify:", JSON.stringify(serializedMap));
 
   return (
     <div className="App">

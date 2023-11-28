@@ -1,4 +1,4 @@
-const COUNTRIES = [
+const COUNTRIES_ALL = [
   {
     name: {
       common: "French Polynesia",
@@ -47238,4 +47238,4 @@ const COUNTRIES = [
   },
 ];
 
-export default COUNTRIES;
+export default COUNTRIES_ALL;
