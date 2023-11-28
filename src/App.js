@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import InteractiveMap from "./pages/InteractiveMap";
 import Statistics from "./pages/Statistics";
 import About from "./pages/About";
+import DetailsPage from "./pages/DetailsPage";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "detail/:common",
+        element: <DetailsPage />,
       },
       {
         path: "interactive-map",

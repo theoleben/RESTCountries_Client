@@ -1,0 +1,14 @@
+/* We are overriding the CSS of MUI components using the global css. Sx prop isn't sufficient to do this job. */
+
+.MuiPaper-root .MuiButtonBase-root .MuiAccordionSummary-content {
+  display: flex;
+  justify-content: center;
+}
+
+.MuiPaper-root .MuiButtonBase-root .MuiAccordionSummary-content.Mui-expanded {
+  margin: 12px;
+}
+
+.MuiPaper-root .MuiButtonBase-root.Mui-expanded {
+  min-height: 0px;
+}
