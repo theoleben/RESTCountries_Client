@@ -1,0 +1,9 @@
+.MuiTable-root {
+  border: 1px solid lightgray;
+}
+
+.MuiTableCell-root.MuiTableCell-head,
+.MuiTableCell-root.MuiTableCell-body {
+  text-align: center;
+  border: 1px solid lightgray;
+}

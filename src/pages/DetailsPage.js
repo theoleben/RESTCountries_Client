@@ -1,53 +1,31 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  styled,
-} from "@mui/material";
 import React from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Box, Paper, styled } from "@mui/material";
+
+import GridComponent from "../components/GridComponent";
+import DUMMY_OBJ from "../dummy/country";
+// import COUNTRIES_ALL from "../dummy/countries";
+import Dummy from "../components/Dummy";
+import TableComponent from "../components/TableComponent";
 import "./DetailsPage.css";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  borderRadius: 0,
-}));
-
-// const Item = styled(Box)(({ theme }) => ({
-//   // backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-//   // ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   // color: theme.palette.text.secondary,
-//   borderRadius: 0,
-//   border: "1px solid black",
-//   border
-// }));
-
 const DetailsPage = () => {
-  // const DUMMY_OBJ = {
-  //   name: {
-  //     common: "Christmas Island",
-  //     official: "Territory of Christmas Island",
-  //     nativeName: {
-  //       eng: {
-  //         official: "Territory of Christmas Island",
-  //         common: "Christmas Island",
-  //       },
-  //     },
-  //   },
-  // };
+  const namesMap = new Map();
+
+  namesMap.set("Common", DUMMY_OBJ.name.common);
+  namesMap.set("Official", DUMMY_OBJ.name.official);
+
+  const codesMap = new Map();
+  codesMap.set("ISO 3166-1 alpha-2", DUMMY_OBJ.cca2);
+  codesMap.set("ISO 3166-1 alpha-3", DUMMY_OBJ.cca3);
+  codesMap.set("ISO 3166-1 numeric", DUMMY_OBJ.ccn3);
+  codesMap.set("ISO 3166-1 independence status", DUMMY_OBJ.independent);
+
+  const globalDataMap = new Map();
+  globalDataMap.set("Population", DUMMY_OBJ.population);
 
   return (
     <>
+      <Dummy />
       <Paper sx={{ width: "300px", height: "205px" }}>
         <Box
           component="img"
@@ -60,63 +38,17 @@ const DetailsPage = () => {
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
         />
       </Paper>
-      <Paper sx={{ width: "500px", mt: 2, ml: 2 }} variant="outlined">
-        <Typography textAlign="center">Names</Typography>
-        <Grid container spacing={0}>
-          <Grid item xs={6}>
-            <Item variant="outlined">Common</Item>
-          </Grid>
-          <Grid item xs={6}>
-            <Item variant="outlined">Nom commun</Item>
-          </Grid>
-          <Grid item xs={6}>
-            <Item variant="outlined">Official</Item>
-          </Grid>
-          <Grid item xs={6}>
-            <Item variant="outlined">Nom officiel</Item>
-          </Grid>
-          <Grid item xs={12}>
-            <Accordion variant="outlined">
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                sx={{ p: 0 }}
-              >
-                <Typography>Native names</Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{ p: 0 }}>
-                <Grid container spacing={0} sx={{ width: "100%" }}>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">English (official)</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Official name in English</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">English (common)</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Common name in English</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Samoa (official)</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Official name in Samoa</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Samoa (commun)</Item>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Item variant="outlined">Common name in Samoa</Item>
-                  </Grid>
-                </Grid>
-              </AccordionDetails>
-            </Accordion>
-          </Grid>
-        </Grid>
-      </Paper>
+
+      {/* GRID */}
+      {/* Names */}
+      <GridComponent title="Names" data={namesMap} />
+      {/* Codes */}
+      <GridComponent title="Codes" data={codesMap} />
+      {/* Global data */}
+      <GridComponent title="Global Data" data={globalDataMap} />
+
+      {/* TABLE */}
+      <TableComponent title="Names" data={namesMap} />
     </>
   );
 };
