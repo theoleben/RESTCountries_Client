@@ -2,6 +2,7 @@ import React from "react";
 import COUNTRIES_ALL from "../dummy/countries";
 
 const Dummy = () => {
+  console.log("COUNTRIES_ALL.length:", COUNTRIES_ALL.length);
   // NATIVE NAMES
   // No native names
   const noNativeName = COUNTRIES_ALL.filter((element) => {
@@ -62,6 +63,48 @@ const Dummy = () => {
       : false;
   });
   console.log("Countries that have multiple languages:", multipleLanguages);
+
+  // CONTINENTS
+  const noContinents = COUNTRIES_ALL.filter((element) => {
+    return !element.hasOwnProperty("continents");
+  });
+  console.log("Countries that have no continents:", noContinents);
+
+  // Multiple continents
+  const multipleContinents = COUNTRIES_ALL.filter((element) => {
+    return element.hasOwnProperty("continents") &&
+      Object.entries(element.continents).length > 1
+      ? true
+      : false;
+  });
+  console.log("Countries that have multiple continents:", multipleContinents);
+
+  // TIMEZONES
+  const noTimeZones = COUNTRIES_ALL.filter((element) => {
+    return !element.hasOwnProperty("timezones");
+  });
+  console.log("Countries that have no timezones:", noTimeZones);
+
+  // Multiple continents
+  const multipleTimeZones = COUNTRIES_ALL.filter((element) => {
+    return element.hasOwnProperty("timezones") &&
+      Object.entries(element.timezones).length > 1
+      ? true
+      : false;
+  });
+  console.log("Countries that have multiple timezones:", multipleTimeZones);
+
+  // FIFA code
+  const noFifaCode = COUNTRIES_ALL.filter((element) => {
+    return !element.hasOwnProperty("fifa");
+  });
+  console.log("Countries that have no fifa code:", noFifaCode);
+
+  // IOC code
+  const noIOCCode = COUNTRIES_ALL.filter((element) => {
+    return !element.hasOwnProperty("cioc");
+  });
+  console.log("Countries that have no ioc code:", noIOCCode);
 
   return <div>Dummy</div>;
 };

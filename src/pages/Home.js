@@ -50,9 +50,9 @@ const Home = () => {
           justifyContent: "space-around",
         }}
       >
-        {DUMMY_COUNTRIES.map((element) => {
+        {DUMMY_COUNTRIES.map((element, index) => {
           return (
-            <ListItem sx={{ width: 300 }}>
+            <ListItem sx={{ width: 300 }} key={index}>
               <CardComponent data={element} />
             </ListItem>
           );

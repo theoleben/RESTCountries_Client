@@ -2,8 +2,35 @@
   border: 1px solid lightgray;
 }
 
+.MuiTableCell-root {
+  padding: 8px;
+}
+
 .MuiTableCell-root.MuiTableCell-head,
 .MuiTableCell-root.MuiTableCell-body {
   text-align: center;
   border: 1px solid lightgray;
+}
+
+.MuiTableCell-root.MuiTableCell-head {
+  font-size: 16px;
+}
+
+.expand {
+  padding: 0px;
+}
+
+.MuiTableCell-root .MuiAccordionSummary-root {
+  min-height: 0px;
+}
+
+.MuiTableCell-root .MuiAccordionSummary-content {
+  margin: 0px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.MuiAccordionSummary-content .MuiTypography-root {
+  font-size: 14px;
 }
