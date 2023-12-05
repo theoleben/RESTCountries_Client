@@ -1,46 +1,25 @@
 import React from "react";
-import CardComponent from "../components/CardComponent";
 import { List, ListItem } from "@mui/material";
+import { useSelector } from "react-redux";
+import {
+  getCountriesStatus,
+  selectAllCountries,
+} from "../redux/slices/countriesSlice";
+import CardComponent from "../components/CardComponent";
+import { sortingByName } from "../utilities/sorting";
 
 const Home = () => {
-  const DUMMY_COUNTRIES = [
-    {
-      common: "countries 1",
-      region: "region 1",
-      subregion: "subregion 1",
-      capitale: "capitale 1",
-      unMember: true,
-    },
-    {
-      common: "countries 1",
-      region: "region 1",
-      subregion: "subregion 1",
-      capitale: "capitale 1",
-      unMember: false,
-    },
-    {
-      common: "countries 1",
-      region: "region 1",
-      subregion: "subregion 1",
-      capitale: "capitale 1",
-      unMember: true,
-    },
-    {
-      common: "countries 1",
-      region: "region 1",
-      subregion: "subregion 1",
-      capitale: "capitale 1",
-      unMember: true,
-    },
-    {
-      common: "countries 1",
-      region: "region 1",
-      subregion: "subregion 1",
-      capitale: "capitale 1",
-      unMember: true,
-    },
-  ];
+  let countries = useSelector(selectAllCountries);
+  const status = useSelector(getCountriesStatus);
 
+  // console.log(status);
+  // console.log(countries);
+  let sortedCountries;
+  if (status === "succeeded") {
+    sortedCountries = [...countries];
+    sortedCountries.sort((a, b) => sortingByName(a, b));
+    // console.log(countries);
+  }
   return (
     <>
       <List
@@ -50,13 +29,14 @@ const Home = () => {
           justifyContent: "space-around",
         }}
       >
-        {DUMMY_COUNTRIES.map((element, index) => {
-          return (
-            <ListItem sx={{ width: 300 }} key={index}>
-              <CardComponent data={element} />
-            </ListItem>
-          );
-        })}
+        {sortedCountries &&
+          sortedCountries.map((element, index) => {
+            return (
+              <ListItem sx={{ width: 300 }} key={index}>
+                <CardComponent data={element} />
+              </ListItem>
+            );
+          })}
       </List>
     </>
   );

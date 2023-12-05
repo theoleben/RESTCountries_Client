@@ -31,11 +31,13 @@ const TableComponent = (props) => {
             // console.log(value);
 
             if (
-              key === "Native names" ||
-              key === "Native names" ||
-              key === "Languages" ||
-              key === "Language"
+              (key === "Native names" ||
+                key === "Native names" ||
+                key === "Languages" ||
+                key === "Language") &&
+              typeof value === "object"
             ) {
+              // console.log(value);
               return (
                 <TableRow key={index}>
                   <TableCell colSpan={2} className="expand">
@@ -45,7 +47,11 @@ const TableComponent = (props) => {
               );
             }
 
-            if (key === "Currencies" || key === "Currency") {
+            if (
+              (key === "Currencies" || key === "Currency") &&
+              typeof value === "object"
+            ) {
+              // console.log(value);
               // console.log(value.size);
               return <RowData key={index} title={key} data={value} />;
             }

@@ -106,6 +106,12 @@ const Dummy = () => {
   });
   console.log("Countries that have no ioc code:", noIOCCode);
 
+  // Flag alt
+  const noFlagAlt = COUNTRIES_ALL.filter((element) => {
+    return !element.flags.hasOwnProperty("alt");
+  });
+  console.log("Countries that have no alt on their flag:", noFlagAlt);
+
   return <div>Dummy</div>;
 };
 
