@@ -27,8 +27,16 @@ const Hero = () => {
         >
           Mon second bouton
         </Button> */}
-        <Typography variant="h1">ExploreNations</Typography>
-        <Typography variant="h2">
+        <Typography
+          variant="h1"
+          sx={{ fontSize: { xs: "40px", sm: "60px" }, marginLeft: "5%" }}
+        >
+          ExploreNations
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{ fontSize: { xs: "20px", sm: "30px" }, marginLeft: "5%" }}
+        >
           The world at the end of your mouse (nothing compares to traveling).
         </Typography>
       </Box>
