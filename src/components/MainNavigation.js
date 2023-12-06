@@ -13,11 +13,12 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import classes from "./MainNavigation.module.css";
 
+// Commented for now
 const navItems = [
-  { name: "Home", path: "" },
-  { name: "Interactive map", path: "interactive-map" },
-  { name: "Statistics", path: "statistics" },
-  { name: "About", path: "about" },
+  // { name: "Home", path: "" },
+  // { name: "Interactive map", path: "interactive-map" },
+  // { name: "Statistics", path: "statistics" },
+  // { name: "About", path: "about" },
 ];
 
 const MainNavigation = () => {
@@ -39,17 +40,19 @@ const MainNavigation = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className={classes.header}>
+      <AppBar position="static" className={classes.header} color="primary">
         <Toolbar component="nav">
           {/* MENU - START */}
-          <Box sx={{ display: { sm: "block", md: "none" } }}>
+          {/* <Box sx={{ display: { sm: "block", md: "none" } }}> */}
+          <Box sx={{ display: "none" }}>
             <IconButton
               size="large"
               aria-label="menu of the website"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={openMenuHandler}
-              color="inherit"
+              // color="inherit"
+              color="secondary"
             >
               <MenuIcon />
             </IconButton>
@@ -59,8 +62,11 @@ const MainNavigation = () => {
               keepMounted
               open={Boolean(menuAnchor)}
               onClose={closeMenuHandler}
+              // sx={{
+              //   display: { sm: "block", md: "none" },
+              // }}
               sx={{
-                display: { sm: "block", md: "none" },
+                display: "none",
               }}
             >
               {navItems.map((item) => (
@@ -85,7 +91,7 @@ const MainNavigation = () => {
             }}
           >
             <NavLink to="">
-              <FlagOutlinedIcon />
+              <FlagOutlinedIcon color="secondary" />
             </NavLink>
           </Box>
           {/* ICON -END */}

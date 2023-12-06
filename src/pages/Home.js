@@ -7,6 +7,7 @@ import {
 } from "../redux/slices/countriesSlice";
 import CardComponent from "../components/CardComponent";
 import { sortingByName } from "../utilities/sorting";
+import Hero from "../components/Hero";
 
 const Home = () => {
   let countries = useSelector(selectAllCountries);
@@ -22,17 +23,25 @@ const Home = () => {
   }
   return (
     <>
+      <Hero />
       <List
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "space-around",
+          justifyContent: "space-between",
+          mx: "5%",
+          mt: "50px",
+          gap: "50px",
         }}
       >
         {sortedCountries &&
           sortedCountries.map((element, index) => {
             return (
-              <ListItem sx={{ width: 300 }} key={index}>
+              <ListItem
+                // sx={{ width: 300, marginBottom: "20px", p: 0 }}
+                sx={{ width: 300, p: 0 }}
+                key={index}
+              >
                 <CardComponent data={element} />
               </ListItem>
             );

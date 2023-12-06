@@ -76,7 +76,7 @@ const CardComponent = (props) => {
       <CardActions sx={{ pt: 0, justifyContent: "end" }}>
         <Link to={`detail/${props.data.name.common}`}>
           <IconButton>
-            <ArrowCircleRightIcon />
+            <ArrowCircleRightIcon color="secondary" />
           </IconButton>
         </Link>
       </CardActions>

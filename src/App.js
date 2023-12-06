@@ -1,12 +1,14 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { StyledEngineProvider } from "@mui/styled-engine";
+import { ThemeProvider } from "@emotion/react";
+import { createTheme } from "@mui/material";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
-import InteractiveMap from "./pages/InteractiveMap";
-import Statistics from "./pages/Statistics";
-import About from "./pages/About";
 import DetailsPage from "./pages/DetailsPage";
+// import InteractiveMap from "./pages/InteractiveMap";
+// import Statistics from "./pages/Statistics";
+// import About from "./pages/About";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -22,27 +24,41 @@ const router = createBrowserRouter([
         path: "detail/:common",
         element: <DetailsPage />,
       },
-      {
-        path: "interactive-map",
-        element: <InteractiveMap />,
-      },
-      {
-        path: "statistics",
-        element: <Statistics />,
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
+      // {
+      //   path: "interactive-map",
+      //   element: <InteractiveMap />,
+      // },
+      // {
+      //   path: "statistics",
+      //   element: <Statistics />,
+      // },
+      // {
+      //   path: "about",
+      //   element: <About />,
+      // },
     ],
   },
 ]);
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#3f50b5",
+        light: "#e8eaf7",
+      },
+      secondary: {
+        main: "#ff5858",
+      },
+    },
+  });
+
   return (
     // Necessary if we want to override the CSS of MUI
     <StyledEngineProvider injectFirst>
-      <RouterProvider router={router}></RouterProvider>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router}></RouterProvider>
+      </ThemeProvider>
     </StyledEngineProvider>
   );
 }

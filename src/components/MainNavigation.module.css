@@ -1,30 +1,29 @@
-.header {
+/* .header {
   background-color: lightcoral;
-}
+} */
 
 /* :global .MuiPaper-root {
   background-color: green;
 } */
 
-:global .MuiToolbar-root {
+/* :global .MuiToolbar-root {
   background-color: pink;
-}
+} */
 
 /* .header :global .MuiToolbar-root {
   background-color: green; */
 /* justify-content: space-evenly; */
 /* } */
 
-.header :global a {
+/* .header :global a {
   text-decoration: none;
-  /* color: green; */
   font-size: 16px;
-}
+} */
 
 /* Solution 1 */
-.header :global .active {
-  color: orange;
-}
+/* .header :global .active {
+  color: green;
+} */
 
 /* Solution 2 */
 /* .header :global .activate {
