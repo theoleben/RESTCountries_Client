@@ -28,7 +28,7 @@ const Home = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "space-between",
+          justifyContent: { xs: "center", md: "space-between" },
           mx: "5%",
           mt: "50px",
           gap: "50px",

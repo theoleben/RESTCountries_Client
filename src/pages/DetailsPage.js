@@ -68,16 +68,36 @@ const DetailsPage = () => {
 
       {/* GRID */}
       <Grid container spacing={0} justifyContent="space-evenly">
-        <Grid item xs={12} md={5} sx={{ mx: { xs: "15%", md: "0px" } }}>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sx={{ mx: { xs: "10%", sm: "15%", md: "0px" } }}
+        >
           <TableComponent title="Names" data={namesMap} />
         </Grid>
-        <Grid item xs={12} md={5} sx={{ mx: { xs: "15%", md: "0px" } }}>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sx={{ mx: { xs: "10%", sm: "15%", md: "0px" } }}
+        >
           <TableComponent title="Codes" data={codesMap} />
         </Grid>
-        <Grid item xs={12} md={5} sx={{ mx: { xs: "15%", md: "0px" } }}>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sx={{ mx: { xs: "10%", sm: "15%", md: "0px" } }}
+        >
           <TableComponent title="Geography" data={geographyMap} />
         </Grid>
-        <Grid item xs={12} md={5} sx={{ mx: { xs: "15%", md: "0px" } }}>
+        <Grid
+          item
+          xs={12}
+          md={5}
+          sx={{ mx: { xs: "10%", sm: "15%", md: "0px" } }}
+        >
           <TableComponent title="Global data" data={globalDataMap} />
         </Grid>
       </Grid>
