@@ -52,10 +52,17 @@ export const selectAllCountries = (state) => {
   //   console.log(state);
   return state.countries;
 };
+
 export const selectCountryByName = (state, name) => {
   // console.log(name);
   //   console.log(state);
   return state.countries.find((country) => country.name.common === name);
+};
+
+export const selectCountryByCode = (state, code) => {
+  // console.log(code);
+  //   console.log(state);
+  return state.countries.find((country) => country.cca3 === code);
 };
 
 export const getCountriesStatus = (state) => {

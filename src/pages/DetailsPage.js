@@ -14,14 +14,14 @@ import {
 import "./DetailsPage.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectCountryByName } from "../redux/slices/countriesSlice";
+import { selectCountryByCode } from "../redux/slices/countriesSlice";
 
 const DetailsPage = () => {
   const params = useParams();
-  // console.log(params.common);
+  // console.log(params.code);
 
   const country = useSelector((state) =>
-    selectCountryByName(state, params.common)
+    selectCountryByCode(state, params.code)
   );
   // console.log(country);
 

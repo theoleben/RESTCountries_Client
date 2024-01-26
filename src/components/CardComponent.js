@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 
 const CardComponent = (props) => {
+  // console.log(props);
   return (
     <Card sx={{ width: 300 }} variant="outlined">
       <CardActionArea>
@@ -74,7 +75,7 @@ const CardComponent = (props) => {
         </List>
       </CardContent>
       <CardActions sx={{ pt: 0, justifyContent: "end" }}>
-        <Link to={`detail/${props.data.name.common}`}>
+        <Link to={`details/${props.data.cca3}`}>
           <IconButton>
             <ArrowCircleRightIcon color="secondary" />
           </IconButton>

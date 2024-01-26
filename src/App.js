@@ -6,7 +6,7 @@ import { createTheme } from "@mui/material";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import DetailsPage from "./pages/DetailsPage";
-// import InteractiveMap from "./pages/InteractiveMap";
+import InteractiveMap from "./pages/InteractiveMap";
 // import Statistics from "./pages/Statistics";
 // import About from "./pages/About";
 import "./App.css";
@@ -21,13 +21,13 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "detail/:common",
+        path: "details/:code",
         element: <DetailsPage />,
       },
-      // {
-      //   path: "interactive-map",
-      //   element: <InteractiveMap />,
-      // },
+      {
+        path: "interactive-map",
+        element: <InteractiveMap />,
+      },
       // {
       //   path: "statistics",
       //   element: <Statistics />,

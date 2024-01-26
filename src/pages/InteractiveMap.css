@@ -1,0 +1,12 @@
+.leaflet-container {
+  height: 600px;
+  width: 50%;
+  background-color: aqua;
+  margin: 0 auto;
+}
+
+.MuiButton-contained,
+.MuiTypography-body1,
+.MuiSwitch-root {
+  margin-left: 10%;
+}

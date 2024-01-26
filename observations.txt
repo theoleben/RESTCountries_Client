@@ -1,0 +1,62 @@
+Here are the 12 countries from RESTCountries that do not appear in the GeoJSON (countries.json):
+
+[X] GLP - Guadeloupe: It is not a country but a French department.
+    Solutions: Exclude from RESTCountries or Zoom in the map but with "France" displayed as country ?
+    Can we modify the geojson ?
+
+UNK - Kosovo: invalid code.
+    Solution: redirect with the correct code.
+
+[X] REU - Réunion: It is not a country but a French department.
+    Solutions: Exclude from RESTCountries or Zoom in the map but with "France" displayed as country ?
+
+[X] MTQ - Martinique: It is not a country but a French department.
+    Solutions: Exclude from RESTCountries or Zoom in the map but with "France" displayed as country ?
+
+BES - Caribbean Netherlands: There should have been a separate element in the geojson.
+    Solution: Zoom in the map but with "Netherlands" displayed as country ?
+
+[X] SJM - Svalbard and Jan Mayen: It is not a country but an archipelago and it is part of Norway.
+    Solution: Exclude from RESTCountries or Zoom in the map but with "Norway" displayed as country ?
+
+[X] BVT - Bouvet Island: It is not a country but a Norwegian volcanic island.
+    Solution: Exclude from RESTCountries or Zoom in the map but with "New Zealand" displayed as country ?
+
+[X] TKL - Tokelau: It is not a country but an archipelago belonging to New Zealand.
+    Solution: Exclude from RESTCountries or Zoom in the map but with "New Zealand" displayed as country ?
+
+CCK - Iles cocos: invalid code et invalid geojson ADMIN. There should have been a separate element in the geojson.
+    Solution: Zoom in the map but with "Indian Ocean Territories" displayed as country ?
+
+CXR - Christmas island : invalid code et invalid geojson ADMIN. There should have been a separate element in the geojson.
+    Solution: Zoom in the map but with "Indian Ocean Territories" displayed as country ?
+
+[X] MYT - Mayotte: It is not a country but a French department.
+    Solutions: Exclude from RESTCountries or Zoom in the map but with "France" displayed as country ?
+
+[X] GUF - Guyane Française: It is not a country but a French department.
+    Solutions: Exclude from RESTCountries or Zoom in the map but with "France" displayed as country ?
+
+
+RESTCountries : 250 countries including 12 which do not appear in GeoJSON.
+GeoJSON: 255 dont 17 avec ISO = -99. 255-17 = 238 with a valid code.
+
+Here are the 17 countries that have a iso code (ADMIN) equal to -99 and which are not part of RESTCountries:
+
+"Ashmore and Cartier Islands" - No redirection to details page
+"Bajo Nuevo Bank (Petrel Is.)" - No redirection to details page
+"Clipperton Island" - No redirection to details page
+"Cyprus No Mans Area" - No redirection to details page
+"Coral Sea Islands" - No redirection to details page
+"Northern Cyprus" - No redirection to details page
+"Dhekelia Sovereign Base Area" - No redirection to details page
+"Indian Ocean Territories" - No redirection to details page
+"Baykonur Cosmodrome" - No redirection to details page
+"Siachen Glacier" - No redirection to details page
+"Kosovo" - Redirect to Kosovo details page
+"Spratly Islands" - No redirection to details page
+"Scarborough Reef" - No redirection to details page
+"Serranilla Bank" - No redirection to details page
+"Somaliland" - No redirection to details page
+"US Naval Base Guantanamo Bay" - No redirection to details page
+"Akrotiri Sovereign Base Area" - No redirection to details page

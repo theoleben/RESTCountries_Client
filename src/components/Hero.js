@@ -37,7 +37,8 @@ const Hero = () => {
           variant="h2"
           sx={{ fontSize: { xs: "20px", sm: "30px" }, marginLeft: "5%" }}
         >
-          The world at the end of your mouse (nothing compares to traveling).
+          The world is one click away. A first step before you go travel around
+          it.
         </Typography>
       </Box>
     </Box>
