@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "globalComment": [
+    "If we want to execute the real-estate-script.js, we have to set the type property to module",
+    "\"type\": \"module\""
+  ]
 }

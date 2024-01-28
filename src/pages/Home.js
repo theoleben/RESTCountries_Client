@@ -18,7 +18,7 @@ const Home = () => {
   let sortedCountries;
   if (status === "succeeded") {
     sortedCountries = [...countries];
-    sortedCountries.sort((a, b) => sortingByName(a, b));
+    sortedCountries.sort((a, b) => sortingByName(a.name.common, b.name.common));
     // console.log(countries);
   }
   return (

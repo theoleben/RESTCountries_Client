@@ -1,0 +1,312 @@
+{
+  "Africa": {
+    "Eastern Africa": [
+      { "name": "British Indian Ocean Territory" },
+      { "name": "Burundi" },
+      { "name": "Comoros" },
+      { "name": "Djibouti" },
+      { "name": "Eritrea" },
+      { "name": "Ethiopia" },
+      { "name": "Kenya" },
+      { "name": "Madagascar" },
+      { "name": "Malawi" },
+      { "name": "Mauritius" },
+      { "name": "Mayotte" },
+      { "name": "Mozambique" },
+      { "name": "Rwanda" },
+      { "name": "Réunion" },
+      { "name": "Seychelles" },
+      { "name": "Somalia" },
+      { "name": "Tanzania" },
+      { "name": "Uganda" },
+      { "name": "Zambia" }
+    ],
+    "Middle Africa": [
+      { "name": "Angola" },
+      { "name": "Cameroon" },
+      { "name": "Central African Republic" },
+      { "name": "Chad" },
+      { "name": "DR Congo" },
+      { "name": "Equatorial Guinea" },
+      { "name": "Gabon" },
+      { "name": "Republic of the Congo" },
+      { "name": "South Sudan" },
+      { "name": "São Tomé and Príncipe" }
+    ],
+    "Northern Africa": [
+      { "name": "Algeria" },
+      { "name": "Egypt" },
+      { "name": "Libya" },
+      { "name": "Morocco" },
+      { "name": "Sudan" },
+      { "name": "Tunisia" },
+      { "name": "Western Sahara" }
+    ],
+    "Southern Africa": [
+      { "name": "Botswana" },
+      { "name": "Eswatini" },
+      { "name": "Lesotho" },
+      { "name": "Namibia" },
+      { "name": "South Africa" },
+      { "name": "Zimbabwe" }
+    ],
+    "Western Africa": [
+      { "name": "Benin" },
+      { "name": "Burkina Faso" },
+      { "name": "Cape Verde" },
+      { "name": "Gambia" },
+      { "name": "Ghana" },
+      { "name": "Guinea" },
+      { "name": "Guinea-Bissau" },
+      { "name": "Ivory Coast" },
+      { "name": "Liberia" },
+      { "name": "Mali" },
+      { "name": "Mauritania" },
+      { "name": "Niger" },
+      { "name": "Nigeria" },
+      { "name": "Saint Helena, Ascension and Tristan da Cunha" },
+      { "name": "Senegal" },
+      { "name": "Sierra Leone" },
+      { "name": "Togo" }
+    ]
+  },
+  "Americas": {
+    "Caribbean": [
+      { "name": "Anguilla" },
+      { "name": "Antigua and Barbuda" },
+      { "name": "Aruba" },
+      { "name": "Bahamas" },
+      { "name": "Barbados" },
+      { "name": "British Virgin Islands" },
+      { "name": "Caribbean Netherlands" },
+      { "name": "Cayman Islands" },
+      { "name": "Cuba" },
+      { "name": "Curaçao" },
+      { "name": "Dominica" },
+      { "name": "Dominican Republic" },
+      { "name": "Grenada" },
+      { "name": "Guadeloupe" },
+      { "name": "Haiti" },
+      { "name": "Jamaica" },
+      { "name": "Martinique" },
+      { "name": "Montserrat" },
+      { "name": "Puerto Rico" },
+      { "name": "Saint Barthélemy" },
+      { "name": "Saint Kitts and Nevis" },
+      { "name": "Saint Lucia" },
+      { "name": "Saint Martin" },
+      { "name": "Saint Vincent and the Grenadines" },
+      { "name": "Sint Maarten" },
+      { "name": "Trinidad and Tobago" },
+      { "name": "Turks and Caicos Islands" },
+      { "name": "United States Virgin Islands" }
+    ],
+    "Central America": [
+      { "name": "Belize" },
+      { "name": "Costa Rica" },
+      { "name": "El Salvador" },
+      { "name": "Guatemala" },
+      { "name": "Honduras" },
+      { "name": "Nicaragua" },
+      { "name": "Panama" }
+    ],
+    "North America": [
+      { "name": "Bermuda" },
+      { "name": "Canada" },
+      { "name": "Greenland" },
+      { "name": "Mexico" },
+      { "name": "Saint Pierre and Miquelon" },
+      { "name": "United States" },
+      { "name": "United States Minor Outlying Islands" }
+    ],
+    "South America": [
+      { "name": "Argentina" },
+      { "name": "Bolivia" },
+      { "name": "Brazil" },
+      { "name": "Chile" },
+      { "name": "Colombia" },
+      { "name": "Ecuador" },
+      { "name": "Falkland Islands" },
+      { "name": "French Guiana" },
+      { "name": "Guyana" },
+      { "name": "Paraguay" },
+      { "name": "Peru" },
+      { "name": "Suriname" },
+      { "name": "Uruguay" },
+      { "name": "Venezuela" }
+    ]
+  },
+  "Antarctic": [
+    { "name": "Antarctica" },
+    { "name": "Bouvet Island" },
+    { "name": "French Southern and Antarctic Lands" },
+    { "name": "Heard Island and McDonald Islands" },
+    { "name": "South Georgia" }
+  ],
+  "Asia": {
+    "Central Asia": [
+      { "name": "Kazakhstan" },
+      { "name": "Kyrgyzstan" },
+      { "name": "Tajikistan" },
+      { "name": "Turkmenistan" },
+      { "name": "Uzbekistan" }
+    ],
+    "Eastern Asia": [
+      { "name": "China" },
+      { "name": "Hong Kong" },
+      { "name": "Japan" },
+      { "name": "Macau" },
+      { "name": "Mongolia" },
+      { "name": "North Korea" },
+      { "name": "South Korea" },
+      { "name": "Taiwan" }
+    ],
+    "South-Eastern Asia": [
+      { "name": "Brunei" },
+      { "name": "Cambodia" },
+      { "name": "Indonesia" },
+      { "name": "Laos" },
+      { "name": "Malaysia" },
+      { "name": "Myanmar" },
+      { "name": "Philippines" },
+      { "name": "Singapore" },
+      { "name": "Thailand" },
+      { "name": "Timor-Leste" },
+      { "name": "Vietnam" }
+    ],
+    "Southern Asia": [
+      { "name": "Afghanistan" },
+      { "name": "Bangladesh" },
+      { "name": "Bhutan" },
+      { "name": "India" },
+      { "name": "Iran" },
+      { "name": "Maldives" },
+      { "name": "Nepal" },
+      { "name": "Pakistan" },
+      { "name": "Sri Lanka" }
+    ],
+    "Western Asia": [
+      { "name": "Armenia" },
+      { "name": "Azerbaijan" },
+      { "name": "Bahrain" },
+      { "name": "Georgia" },
+      { "name": "Iraq" },
+      { "name": "Israel" },
+      { "name": "Jordan" },
+      { "name": "Kuwait" },
+      { "name": "Lebanon" },
+      { "name": "Oman" },
+      { "name": "Palestine" },
+      { "name": "Qatar" },
+      { "name": "Saudi Arabia" },
+      { "name": "Syria" },
+      { "name": "Turkey" },
+      { "name": "United Arab Emirates" },
+      { "name": "Yemen" }
+    ]
+  },
+  "Europe": {
+    "Central Europe": [
+      { "name": "Austria" },
+      { "name": "Czechia" },
+      { "name": "Hungary" },
+      { "name": "Poland" },
+      { "name": "Slovakia" },
+      { "name": "Slovenia" }
+    ],
+    "Eastern Europe": [
+      { "name": "Belarus" },
+      { "name": "Moldova" },
+      { "name": "Russia" },
+      { "name": "Ukraine" }
+    ],
+    "Northern Europe": [
+      { "name": "Denmark" },
+      { "name": "Estonia" },
+      { "name": "Faroe Islands" },
+      { "name": "Finland" },
+      { "name": "Guernsey" },
+      { "name": "Iceland" },
+      { "name": "Ireland" },
+      { "name": "Isle of Man" },
+      { "name": "Jersey" },
+      { "name": "Latvia" },
+      { "name": "Lithuania" },
+      { "name": "Norway" },
+      { "name": "Svalbard and Jan Mayen" },
+      { "name": "Sweden" },
+      { "name": "United Kingdom" },
+      { "name": "Åland Islands" }
+    ],
+    "Southeast Europe": [
+      { "name": "Albania" },
+      { "name": "Bosnia and Herzegovina" },
+      { "name": "Bulgaria" },
+      { "name": "Croatia" },
+      { "name": "Kosovo" },
+      { "name": "Montenegro" },
+      { "name": "North Macedonia" },
+      { "name": "Romania" },
+      { "name": "Serbia" }
+    ],
+    "Southern Europe": [
+      { "name": "Andorra" },
+      { "name": "Cyprus" },
+      { "name": "Gibraltar" },
+      { "name": "Greece" },
+      { "name": "Italy" },
+      { "name": "Malta" },
+      { "name": "Portugal" },
+      { "name": "San Marino" },
+      { "name": "Spain" },
+      { "name": "Vatican City" }
+    ],
+    "Western Europe": [
+      { "name": "Belgium" },
+      { "name": "France" },
+      { "name": "Germany" },
+      { "name": "Liechtenstein" },
+      { "name": "Luxembourg" },
+      { "name": "Monaco" },
+      { "name": "Netherlands" },
+      { "name": "Switzerland" }
+    ]
+  },
+  "Oceania": {
+    "Australia and New Zealand": [
+      { "name": "Australia" },
+      { "name": "Christmas Island" },
+      { "name": "Cocos (Keeling) Islands" },
+      { "name": "New Zealand" },
+      { "name": "Norfolk Island" }
+    ],
+    "Melanesia": [
+      { "name": "Fiji" },
+      { "name": "New Caledonia" },
+      { "name": "Papua New Guinea" },
+      { "name": "Solomon Islands" },
+      { "name": "Vanuatu" }
+    ],
+    "Micronesia": [
+      { "name": "Guam" },
+      { "name": "Kiribati" },
+      { "name": "Marshall Islands" },
+      { "name": "Micronesia" },
+      { "name": "Nauru" },
+      { "name": "Northern Mariana Islands" },
+      { "name": "Palau" }
+    ],
+    "Polynesia": [
+      { "name": "American Samoa" },
+      { "name": "Cook Islands" },
+      { "name": "French Polynesia" },
+      { "name": "Niue" },
+      { "name": "Pitcairn Islands" },
+      { "name": "Samoa" },
+      { "name": "Tokelau" },
+      { "name": "Tonga" },
+      { "name": "Tuvalu" },
+      { "name": "Wallis and Futuna" }
+    ]
+  }
+}
