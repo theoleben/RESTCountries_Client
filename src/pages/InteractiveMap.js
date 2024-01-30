@@ -1,32 +1,57 @@
-import React, { /*useCallback, useEffect,*/ useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  GeoJSON,
-  // Popup,
-  // FeatureGroup,
-  // LayerGroup,
-} from "react-leaflet";
+import React, { useEffect, useRef, useState } from "react";
+import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "./InteractiveMap.css";
 import "leaflet/dist/leaflet.css";
 import geojson from "../geojson/countries.json";
-// import { useSelector } from "react-redux";
-// import {
-//   selectAllCountries,
-//   selectCountryByName,
-// } from "../redux/slices/countriesSlice";
-import { Switch, Typography } from "@mui/material";
-// import { renderToString } from "react-dom/server";
+import { useSelector } from "react-redux";
+import {
+  selectAllCountries,
+  selectCountryByName,
+} from "../redux/slices/countriesSlice";
+import { Switch, Typography, Box } from "@mui/material";
 import RedirectPopup from "../components/RedirectPopup";
+import TreeViewComponent from "../components/TreeViewComponent";
+import { buildMap, serializeMap } from "../utilities/map";
+
+const exceptions_FRA = [
+  "Guadeloupe",
+  "Réunion",
+  "Martinique",
+  "Mayotte",
+  "French Guiana",
+];
+const exceptions_UNK = ["Kosovo"];
+const exceptions_NLD = ["Caribbean Netherlands"];
+const exceptions_NOR = ["Svalbard and Jan Mayen", "Bouvet Island"];
+const exceptions_NZL = ["Tokelau"];
+const exceptions_IndianOceanTerritories = [
+  "Cocos (Keeling) Islands",
+  "Christmas Island",
+];
 
 const countryInitialValue = { name: "", code: "" };
+
 const InteractiveMap = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [dataGeojson, setDataGeojson] = useState(geojson);
+  const [dataGeojson, setDataGeojson] = useState(null);
   const [geojsonKey, setGeojsonkey] = useState(0);
   // const [popupPos, setPopupPos] = useState([0, 0]);
   const [visibility, setVisibility] = useState(false);
   const [country, setCountry] = useState(countryInitialValue);
+  const map = useRef(null);
+  const [treeItem, setTreeItem] = useState(null);
+
+  const countries = useSelector(selectAllCountries);
+  console.log(countries);
+
+  const countriesMap = buildMap(countries);
+  console.log("countriesMap:", countriesMap);
+
+  const serializedMap = serializeMap(countriesMap);
+  console.log("serializedMap: ", serializedMap);
+  // console.log("serializedMap stringify:", JSON.stringify(serializedMap));
+
+  // console.log(Object.entries(serializedMap));
 
   // TESTING - START
   // console.log("geojson:", geojson);
@@ -83,6 +108,9 @@ const InteractiveMap = () => {
   // console.log(tabResults2);
   // TESTING - END
 
+  // const map = useMap();
+  // console.log("map:", map);
+
   const handleClick = (event) => {
     // console.log(event);
     // console.log(event.target);
@@ -130,11 +158,11 @@ const InteractiveMap = () => {
     } else {
       data = {
         ...geojson,
-        // features: geojson.features.slice(5, 8),
-        features: geojson.features.filter(
-          (element) =>
-            element.properties.ADMIN === "US Naval Base Guantanamo Bay"
-        ),
+        features: geojson.features.slice(5, 8),
+        // features: geojson.features.filter(
+        //   (element) =>
+        //     element.properties.ADMIN === "US Naval Base Guantanamo Bay"
+        // ),
       };
     }
 
@@ -145,25 +173,125 @@ const InteractiveMap = () => {
     setIsChecked(!isChecked);
   };
 
-  // const updateData = () => {
-  //   let data = {
-  //     ...geojson,
-  //     features: geojson.features.splice(0, 3),
-  //   };
-
-  //   console.log(data);
-
-  //   setDataGeojson(data);
-  // };
+  // Change dynamically zoom
+  const handleZoom = (event) => {
+    console.log("handleZoom");
+    // console.log(map);
+    // console.log(map.current);
+    // map.current.setView([51.505, -0.09], 13);
+    map.current.setView([-17.6797, -149.4068], 8, { animate: true });
+  };
   // TESTING - END
+
+  const handleItemClick = (id) => {
+    // console.log(id);
+    const match = id.match(/_([^_]+)$/);
+    // console.log(match);
+    if (match) {
+      const country = match[1];
+      console.log("country:", country);
+      setTreeItem(country);
+    }
+  };
+
+  const countryFromRedux = useSelector((state) =>
+    selectCountryByName(state, treeItem)
+  );
+
+  // console.log(countryFromRedux);
+
+  useEffect(() => {
+    console.log("useEffect");
+    if (countryFromRedux) {
+      console.log(countryFromRedux);
+      console.log(countryFromRedux.latlng);
+      const desiredLatLng = countryFromRedux.latlng;
+
+      // Update zoom
+      map.current.setView(desiredLatLng, 6, { animate: true });
+
+      // Update GeoJSON data
+      let data;
+      if (exceptions_FRA.includes(countryFromRedux.name.common)) {
+        console.log("here");
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ISO_A3 === "FRA"
+          ),
+        };
+      } else if (exceptions_UNK.includes(countryFromRedux.name.common)) {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ADMIN === "Kosovo"
+          ),
+        };
+      } else if (exceptions_NLD.includes(countryFromRedux.name.common)) {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ISO_A3 === "NLD"
+          ),
+        };
+      } else if (exceptions_NOR.includes(countryFromRedux.name.common)) {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ISO_A3 === "NOR"
+          ),
+        };
+      } else if (exceptions_NZL.includes(countryFromRedux.name.common)) {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ISO_A3 === "NZL"
+          ),
+        };
+      } else if (
+        exceptions_IndianOceanTerritories.includes(countryFromRedux.name.common)
+      ) {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ADMIN === "Indian Ocean Territories"
+          ),
+        };
+      } else {
+        data = {
+          ...geojson,
+          features: geojson.features.filter(
+            (element) => element.properties.ISO_A3 === countryFromRedux.cca3
+          ),
+        };
+      }
+      // console.log("data:", data);
+
+      setGeojsonkey((value) => value + 1);
+      setDataGeojson(data);
+    }
+  }, [countryFromRedux]);
+
   return (
     <>
       <Typography>Change dynamically geojson data</Typography>
       <Switch checked={isChecked} onChange={handleChange}></Switch>
-      {/* <button onClick={updateData}>Mettre à jour</button> */}
-
-      {dataGeojson && (
-        <MapContainer center={[51.505, -0.09]} zoom={2}>
+      <Typography>Change dynamically zoom</Typography>
+      <Switch onChange={handleZoom}></Switch>
+      <Box sx={{ display: "flex" }}>
+        <TreeViewComponent data={serializedMap} onClicked={handleItemClick} />
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={4}
+          ref={map}
+          whenReady={(map) => {
+            console.log(map.target);
+            map.target.on("zoom", (e) => {
+              // console.log("its change");
+              console.log("zoom:", map.target.getZoom());
+            });
+          }}
+        >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -202,8 +330,8 @@ const InteractiveMap = () => {
             }}
           />
         </MapContainer>
-      )}
-      <RedirectPopup visible={visibility} country={country} />
+        <RedirectPopup visible={visibility} country={country} />
+      </Box>
     </>
   );
 };

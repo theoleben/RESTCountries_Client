@@ -1,3 +1,4 @@
+-----
 Here are the 12 countries from RESTCountries that do not appear in the GeoJSON (countries.json):
 
 [X] GLP - Guadeloupe: It is not a country but a French department.
@@ -20,7 +21,7 @@ BES - Caribbean Netherlands: There should have been a separate element in the ge
     Solution: Exclude from RESTCountries or Zoom in the map but with "Norway" displayed as country ?
 
 [X] BVT - Bouvet Island: It is not a country but a Norwegian volcanic island.
-    Solution: Exclude from RESTCountries or Zoom in the map but with "New Zealand" displayed as country ?
+    Solution: Exclude from RESTCountries or Zoom in the map but with "Norway" displayed as country ?
 
 [X] TKL - Tokelau: It is not a country but an archipelago belonging to New Zealand.
     Solution: Exclude from RESTCountries or Zoom in the map but with "New Zealand" displayed as country ?
@@ -60,3 +61,14 @@ Here are the 17 countries that have a iso code (ADMIN) equal to -99 and which ar
 "Somaliland" - No redirection to details page
 "US Naval Base Guantanamo Bay" - No redirection to details page
 "Akrotiri Sovereign Base Area" - No redirection to details page
+
+-----
+Countries from RESTCountries where the latlng field is not correct
+OLD/NEW
+- Cape Verde [16.5388, 23.0418]/[16.5388, -23.0418]
+- Saint Martin [18.0708, 63.0501]/[18.0708, -63.0501]
+- Bouvet Islands [54.4208, 3.3464]/[-54.4208, 3.3464]
+- Heard Island and McDonald Islands [53.0818, 73.5042]/[-53.0818, 73.5042]
+- Cocos (Keeling) Islands [12.1642, 96.871]/[-12.1642, 96.871]
+- Fiji [17.7134, 178.065]/[-17.7134, 178.065]
+- French Polynesia [17.6797, 149.4068]/[-17.6797, -149.4068]
