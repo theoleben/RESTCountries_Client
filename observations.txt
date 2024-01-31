@@ -72,3 +72,54 @@ OLD/NEW
 - Cocos (Keeling) Islands [12.1642, 96.871]/[-12.1642, 96.871]
 - Fiji [17.7134, 178.065]/[-17.7134, 178.065]
 - French Polynesia [17.6797, 149.4068]/[-17.6797, -149.4068]
+
+
+----
+Countries that are not displayed correctly in some subregion:
+- Africa
+    - Eastern Africa - NOK - 19 dont 2
+        - Mayotte - MYT
+        - Réunion - REU
+    - Middle Africa: OK - 10
+    - Northern Africa: OK - 7
+    - Southern Africa: OK - 6
+    - Western Africa: OK - 17
+
+- Americas
+    - Caribbean - NOK - 28 dont 3
+        - Guadeloupe - GLP
+        - Martinique - MTQ
+        - Caribbean Netherlands - BES
+    - Central America - OK - 7
+    - North America - OK - 7
+    - South America - NOK - 14 dont 1
+        - French Guiana - GUF
+
+- Antartica - NOK - 5 dont 1
+    - Bouvet Island - BVT
+
+- Asia
+    - Central Asia - OK - 5
+    - Eastern Asia - OK - 8
+    - South-Eastern Asia - OK - 11
+    - Southern Asia - OK - 9
+    - Western Asia - OK - 17
+
+- Europe
+    - Central Europe - OK - 6
+    - Eastern Europe - OK - 4
+    - Northern Europe - NOK - 16 dont 1
+        - Svalbard and Jan Mayen - SJM
+    - Southeast Europe - NOK - 9 dont 1
+        - Kosovo - UNK
+    - Southern Europe - OK - 10
+    - Western Europe - OK - 8
+
+- Oceania
+    - Australia and New Zealand - NOK - 5 dont 2
+        - Cocos (Keeling) Islands - CCK
+        - Christmas Island - CXR
+    - Melanesia - OK - 5
+    - Micronesia - OK - 7
+    - Polynesia - NOK - 10 dont 1
+        - Tokelau - TKL

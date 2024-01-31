@@ -6,28 +6,24 @@ import geojson from "../geojson/countries.json";
 import { useSelector } from "react-redux";
 import {
   selectAllCountries,
-  selectCountryByName,
+  selectCountryByType,
 } from "../redux/slices/countriesSlice";
 import { Switch, Typography, Box } from "@mui/material";
 import RedirectPopup from "../components/RedirectPopup";
 import TreeViewComponent from "../components/TreeViewComponent";
 import { buildMap, serializeMap } from "../utilities/map";
-
-const exceptions_FRA = [
-  "Guadeloupe",
-  "Réunion",
-  "Martinique",
-  "Mayotte",
-  "French Guiana",
-];
-const exceptions_UNK = ["Kosovo"];
-const exceptions_NLD = ["Caribbean Netherlands"];
-const exceptions_NOR = ["Svalbard and Jan Mayen", "Bouvet Island"];
-const exceptions_NZL = ["Tokelau"];
-const exceptions_IndianOceanTerritories = [
-  "Cocos (Keeling) Islands",
-  "Christmas Island",
-];
+import {
+  processGeoDataCountry,
+  processGeoDataRegionOrSubregion,
+} from "../utilities/functions";
+import {
+  COUNTRY,
+  REGION,
+  SUBREGION,
+  ViewRegionSubregion,
+  exceptions_ANTARTIC,
+} from "../constants";
+import DisplayPosition from "./ReactLeaflet/ExternalState/DisplayPosition";
 
 const countryInitialValue = { name: "", code: "" };
 
@@ -42,16 +38,23 @@ const InteractiveMap = () => {
   const [treeItem, setTreeItem] = useState(null);
 
   const countries = useSelector(selectAllCountries);
-  console.log(countries);
+  // console.log(countries);
 
   const countriesMap = buildMap(countries);
-  console.log("countriesMap:", countriesMap);
+  // console.log("countriesMap:", countriesMap);
 
   const serializedMap = serializeMap(countriesMap);
-  console.log("serializedMap: ", serializedMap);
+  // console.log("serializedMap: ", serializedMap);
   // console.log("serializedMap stringify:", JSON.stringify(serializedMap));
 
   // console.log(Object.entries(serializedMap));
+
+  // const tab = countries.filter(
+  //   (element) => !element.continents.includes(element.region)
+  // );
+
+  // console.log(tab.length);
+  // console.log(tab);
 
   // TESTING - START
   // console.log("geojson:", geojson);
@@ -184,93 +187,61 @@ const InteractiveMap = () => {
   // TESTING - END
 
   const handleItemClick = (id) => {
-    // console.log(id);
-    const match = id.match(/_([^_]+)$/);
-    // console.log(match);
-    if (match) {
-      const country = match[1];
-      console.log("country:", country);
-      setTreeItem(country);
-    }
+    setTreeItem(id);
   };
 
-  const countryFromRedux = useSelector((state) =>
-    selectCountryByName(state, treeItem)
+  // Region, subregion and country
+  let [type, name, retrievedData] = useSelector((state) =>
+    selectCountryByType(state, treeItem)
   );
 
-  // console.log(countryFromRedux);
+  // console.log("type :", type);
+  // console.log("name: ", name);
+  // console.log("retrievedData :", retrievedData);
 
   useEffect(() => {
-    console.log("useEffect");
-    if (countryFromRedux) {
-      console.log(countryFromRedux);
-      console.log(countryFromRedux.latlng);
-      const desiredLatLng = countryFromRedux.latlng;
+    // console.log("useEffect");
+
+    if (
+      retrievedData &&
+      !Array.isArray(retrievedData) &&
+      (type === COUNTRY ||
+        (type === SUBREGION &&
+          exceptions_ANTARTIC.includes(retrievedData.name.common)))
+    ) {
+      // console.log(retrievedData);
+      // console.log(retrievedData.latlng);
+      const desiredLatLng = retrievedData.latlng;
 
       // Update zoom
       map.current.setView(desiredLatLng, 6, { animate: true });
 
       // Update GeoJSON data
-      let data;
-      if (exceptions_FRA.includes(countryFromRedux.name.common)) {
-        console.log("here");
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ISO_A3 === "FRA"
-          ),
-        };
-      } else if (exceptions_UNK.includes(countryFromRedux.name.common)) {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ADMIN === "Kosovo"
-          ),
-        };
-      } else if (exceptions_NLD.includes(countryFromRedux.name.common)) {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ISO_A3 === "NLD"
-          ),
-        };
-      } else if (exceptions_NOR.includes(countryFromRedux.name.common)) {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ISO_A3 === "NOR"
-          ),
-        };
-      } else if (exceptions_NZL.includes(countryFromRedux.name.common)) {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ISO_A3 === "NZL"
-          ),
-        };
-      } else if (
-        exceptions_IndianOceanTerritories.includes(countryFromRedux.name.common)
-      ) {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ADMIN === "Indian Ocean Territories"
-          ),
-        };
-      } else {
-        data = {
-          ...geojson,
-          features: geojson.features.filter(
-            (element) => element.properties.ISO_A3 === countryFromRedux.cca3
-          ),
-        };
-      }
-      // console.log("data:", data);
+      const geoData = processGeoDataCountry(geojson, retrievedData);
 
       setGeojsonkey((value) => value + 1);
-      setDataGeojson(data);
+      setDataGeojson(geoData);
+    } else if (
+      (type === REGION || type === SUBREGION) &&
+      Array.isArray(retrievedData) &&
+      retrievedData.length > 0
+    ) {
+      // Update zoom
+      const obj = ViewRegionSubregion.filter((element) =>
+        element.names.includes(name)
+      );
+      // console.log(obj);
+      if (obj.length > 0) {
+        map.current.setView(obj[0].latlng, obj[0].zoom, { animate: true });
+      }
+
+      // Update GeoJSON data
+      const geoData = processGeoDataRegionOrSubregion(geojson, retrievedData);
+
+      setGeojsonkey((value) => value + 1);
+      setDataGeojson(geoData);
     }
-  }, [countryFromRedux]);
+  }, [type, name, retrievedData]);
 
   return (
     <>
@@ -278,6 +249,7 @@ const InteractiveMap = () => {
       <Switch checked={isChecked} onChange={handleChange}></Switch>
       <Typography>Change dynamically zoom</Typography>
       <Switch onChange={handleZoom}></Switch>
+      {/* {map.current ? <DisplayPosition map={map.current} /> : null} */}
       <Box sx={{ display: "flex" }}>
         <TreeViewComponent data={serializedMap} onClicked={handleItemClick} />
         <MapContainer
@@ -285,10 +257,10 @@ const InteractiveMap = () => {
           zoom={4}
           ref={map}
           whenReady={(map) => {
-            console.log(map.target);
+            // console.log(map.target);
             map.target.on("zoom", (e) => {
               // console.log("its change");
-              console.log("zoom:", map.target.getZoom());
+              // console.log("zoom:", map.target.getZoom());
             });
           }}
         >

@@ -10,6 +10,7 @@ import InteractiveMap from "./pages/InteractiveMap";
 // import Statistics from "./pages/Statistics";
 // import About from "./pages/About";
 import "./App.css";
+// import ExternalStateExample from "./pages/ReactLeaflet/ExternalState/ExternalStateExample";
 // import ReactControl from "./pages/ReactLeaflet/ReactControl/ReactControl";
 
 const router = createBrowserRouter([
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         path: "interactive-map",
         element: <InteractiveMap />,
         // element: <ReactControl />,
+        // element: <ExternalStateExample />,
       },
       // {
       //   path: "statistics",
