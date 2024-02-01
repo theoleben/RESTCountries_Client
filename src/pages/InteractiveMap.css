@@ -1,12 +1,15 @@
 .leaflet-container {
   height: 600px;
-  width: 600px;
+  width: 100%;
   background-color: aqua;
-  margin: 0 auto;
+  border-radius: 2rem;
 }
 
-.MuiButton-contained,
-.MuiTypography-body1,
-.MuiSwitch-root {
-  margin-left: 10%;
+.MuiTreeView-root {
+  border: 1px solid lightgrey;
+  border-radius: 2rem;
+  width: 350px;
+  height: 580px;
+  overflow: auto;
+  padding: 10px;
 }

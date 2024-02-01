@@ -8,7 +8,10 @@ const RedirectPopup = (props) => {
     <div
       style={{
         display: `${props.visible ? "block" : "none"}`,
-        maxWidth: "150px",
+        position: "absolute",
+        bottom: "20px",
+        left: "20px",
+        zIndex: "10000",
       }}
     >
       <Link to={`/details/${props.country.code}`}>
