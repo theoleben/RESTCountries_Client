@@ -257,7 +257,7 @@ const InteractiveMap = () => {
           display: "flex",
           justifyContent: "space-evenly",
           width: "100%",
-          marginTop: "100px",
+          paddingTop: "100px",
         }}
       >
         <TreeViewComponent data={serializedMap} onClicked={handleItemClick} />
