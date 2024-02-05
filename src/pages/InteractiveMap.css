@@ -1,12 +1,18 @@
 .leaflet-container {
-  height: 600px;
-  width: 50%;
-  background-color: aqua;
-  margin: 0 auto;
+  height: calc(70vh + 40px);
+  width: 100%;
+  border-radius: 2rem;
 }
 
-.MuiButton-contained,
-.MuiTypography-body1,
-.MuiSwitch-root {
-  margin-left: 10%;
+.MuiTreeView-root {
+  width: 100%;
+  height: 70vh;
+  overflow: auto;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 599.98px) {
+  .MuiTreeView-root {
+    height: 35vh;
+  }
 }

@@ -10,8 +10,8 @@ import InteractiveMap from "./pages/InteractiveMap";
 // import Statistics from "./pages/Statistics";
 // import About from "./pages/About";
 import "./App.css";
-import countries_all from "./dummy/countries";
-import { buildMap, serializeMap } from "./utilities/map";
+// import ExternalStateExample from "./pages/ReactLeaflet/ExternalState/ExternalStateExample";
+// import ReactControl from "./pages/ReactLeaflet/ReactControl/ReactControl";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +29,8 @@ const router = createBrowserRouter([
       {
         path: "interactive-map",
         element: <InteractiveMap />,
+        // element: <ReactControl />,
+        // element: <ExternalStateExample />,
       },
       // {
       //   path: "statistics",
@@ -43,16 +45,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  console.log("countries_all: ", countries_all);
-  console.log("countries_all.length: ", countries_all.length);
-
-  const countriesMap = buildMap(countries_all);
-  console.log("countriesMap:", countriesMap);
-
-  const serializedMap = serializeMap(countriesMap);
-  console.log(serializedMap);
-  console.log("serializedMap stringify:", JSON.stringify(serializedMap));
-
   const theme = createTheme({
     palette: {
       primary: {

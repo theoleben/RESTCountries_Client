@@ -78,7 +78,9 @@ export function buildMap(data) {
   });
 
   if (data.length === counter) {
-    console.log("All countries have been processed");
+    // console.log("All countries have been processed");
+  } else {
+    console.log("Not all countries have been processed");
   }
 
   return map_regions;

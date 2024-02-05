@@ -4,6 +4,8 @@ import MainNavigation from "../components/MainNavigation";
 import Footer from "../components/Footer";
 
 const Root = () => {
+  // console.log("Root");
+
   return (
     <>
       <MainNavigation />

@@ -15,8 +15,8 @@ import classes from "./MainNavigation.module.css";
 
 // Commented for now
 const navItems = [
-  { name: "Home", path: "" },
-  { name: "Interactive map", path: "interactive-map" },
+  { name: "Accueil", path: "" },
+  { name: "Carte interactive", path: "interactive-map" },
   // { name: "Statistics", path: "statistics" },
   // { name: "About", path: "about" },
 ];
@@ -39,7 +39,7 @@ const MainNavigation = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" className={classes.header} color="primary">
         <Toolbar component="nav">
           {/* MENU - START */}
