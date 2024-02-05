@@ -1,7 +1,6 @@
 .leaflet-container {
   height: calc(70vh + 40px);
   width: 100%;
-  /* background-color: aqua; */
   border-radius: 2rem;
 }
 
@@ -14,7 +13,6 @@
 /* MEDIA QUERIES */
 @media (max-width: 599.98px) {
   .MuiTreeView-root {
-    /* border: 4px solid green; */
     height: 35vh;
   }
 }

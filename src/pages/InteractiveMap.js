@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import "./InteractiveMap.css";
 import "leaflet/dist/leaflet.css";
 import geojson from "../geojson/countries.json";
 import { useSelector } from "react-redux";
@@ -8,7 +7,7 @@ import {
   selectAllCountries,
   selectCountryByType,
 } from "../redux/slices/countriesSlice";
-import { /*Switch, Typography,*/ Box } from "@mui/material";
+import { Box } from "@mui/material";
 import RedirectPopup from "../components/RedirectPopup";
 import TreeViewComponent from "../components/TreeViewComponent";
 import { buildMap, serializeMap } from "../utilities/map";
@@ -23,15 +22,13 @@ import {
   ViewRegionSubregion,
   exceptions_ANTARTIC,
 } from "../constants";
-// import DisplayPosition from "./ReactLeaflet/ExternalState/DisplayPosition";
+import "./InteractiveMap.css";
 
 const countryInitialValue = { name: "", code: "" };
 
 const InteractiveMap = () => {
-  // const [isChecked, setIsChecked] = useState(false);
   const [dataGeojson, setDataGeojson] = useState(null);
   const [geojsonKey, setGeojsonkey] = useState(0);
-  // const [popupPos, setPopupPos] = useState([0, 0]);
   const [visibility, setVisibility] = useState(false);
   const [country, setCountry] = useState(countryInitialValue);
   const map = useRef(null);
@@ -47,78 +44,8 @@ const InteractiveMap = () => {
   // console.log("serializedMap: ", serializedMap);
   // console.log("serializedMap stringify:", JSON.stringify(serializedMap));
 
-  // console.log(Object.entries(serializedMap));
-
-  // const tab = countries.filter(
-  //   (element) => !element.continents.includes(element.region)
-  // );
-
-  // console.log(tab.length);
-  // console.log(tab);
-
-  // TESTING - START
-  // console.log("geojson:", geojson);
-  // console.log("dataGeojson:", dataGeojson);
-
-  // let countries = useSelector(selectAllCountries);
-  // console.log("countries:", countries);
-  // console.log("size:", countries.length);
-
-  // // Check if all countries are in the geojson
-  // let countries_code = [];
-  // let geojson_code = [];
-
-  // countries.forEach((element) => {
-  //   countries_code.push(element.cca3);
-  // });
-
-  // // countries.json
-  // geojson.features.forEach((element) => {
-  //   geojson_code.push(element.properties.ISO_A3);
-  // });
-
-  // // geojson.features.forEach((element) => {
-  // //   geojson_code.push(element.properties.adm0_a3);
-  // // });
-
-  // countries_code.sort();
-  // geojson_code.sort();
-  // console.log("countries_code:", countries_code);
-  // console.log("geojson_code:", geojson_code);
-
-  // // RESTCountries code that are not in GeoJSON
-  // // let tabResults = countries_code.filter(
-  // //   (code) => !geojson_code.includes(code)
-  // // );
-
-  // // GeoJSON code that are not in RESTCountries
-  // let tabResults = geojson_code.filter(
-  //   (code) => !countries_code.includes(code)
-  // );
-
-  // let tabResults2 = geojson.features.filter(
-  //   (element) => element.properties.ISO_A3 === "-99"
-  // );
-
-  // if (tabResults.length === 0) {
-  //   console.log("Tous les éléments de countries_code sont dans geojson_code.");
-  // } else {
-  //   console.log(
-  //     "Les éléments suivants de countries_code ne sont pas dans geojson_code:",
-  //     tabResults
-  //   );
-  // }
-  // console.log(tabResults2);
-  // TESTING - END
-
-  // const map = useMap();
-  // console.log("map:", map);
-
   const handleClick = (event) => {
     // console.log(event);
-    // console.log(event.target);
-    // console.log(event.target.feature);
-    // console.log(event.target.feature.properties);
     const name = event.target.feature.properties.ADMIN;
     let code = event.target.feature.properties.ISO_A3;
 
@@ -139,55 +66,15 @@ const InteractiveMap = () => {
 
     // Attached a popup
     layer.bindPopup(feature.properties.ADMIN);
-
-    // const test = renderToString(<RedirectPopup name={feature.properties.ADMIN} />);
-    // console.log(test);
-    // console.log(<RedirectPopup name={feature.properties.ADMIN} />);
-    // layer.bindPopup(<RedirectPopup name={feature.properties.ADMIN} />);
   };
-
-  // Change dynamically geojson data
-  // TESTING - START
-  // const handleChange = (event) => {
-  //   // console.log(event);
-  //   // console.log("isChecked :", isChecked);
-
-  //   let data;
-  //   if (isChecked) {
-  //     data = {
-  //       ...geojson,
-  //       features: geojson.features.slice(0, 3),
-  //     };
-  //   } else {
-  //     data = {
-  //       ...geojson,
-  //       features: geojson.features.slice(5, 8),
-  //       // features: geojson.features.filter(
-  //       //   (element) =>
-  //       //     element.properties.ADMIN === "US Naval Base Guantanamo Bay"
-  //       // ),
-  //     };
-  //   }
-
-  //   // console.log("data:", data);
-
-  //   setGeojsonkey((value) => value + 1);
-  //   setDataGeojson(data);
-  //   setIsChecked(!isChecked);
-  // };
-
-  // // Change dynamically zoom
-  // const handleZoom = (event) => {
-  //   console.log("handleZoom");
-  //   // console.log(map);
-  //   // console.log(map.current);
-  //   // map.current.setView([51.505, -0.09], 13);
-  //   map.current.setView([-17.6797, -149.4068], 8, { animate: true });
-  // };
-  // TESTING - END
 
   const handleItemClick = (id) => {
     setTreeItem(id);
+
+    if (visibility || country.name.length > 0 || country.code.length > 0) {
+      setVisibility(false);
+      setCountry(countryInitialValue);
+    }
   };
 
   // Region, subregion and country
@@ -244,14 +131,6 @@ const InteractiveMap = () => {
 
   return (
     <>
-      {/* <Typography>Change dynamically geojson data</Typography>
-      <Switch checked={isChecked} onChange={handleChange}></Switch>
-      <Typography>Change dynamically zoom</Typography>
-      <Switch onChange={handleZoom}></Switch> */}
-      {/* {map.current ? <DisplayPosition map={map.current} /> : null} */}
-      {/* <Typography component="h2" sx={{ my: "50px", textAlign: "center" }}>
-        Carte interactive
-      </Typography> */}
       <Box
         sx={{
           display: "flex",
@@ -314,15 +193,9 @@ const InteractiveMap = () => {
               data={dataGeojson}
               onEachFeature={handleFeature}
               eventHandlers={{
-                // click: (event) => {
-                //   console.log("clicked");
-                //   // console.log(event);
-                //   // console.log(event.latlng);
-                //   // setPopupPos([event.latlng.lat, event.latlng.lng]);
-                // },
                 popupopen: (event) => {
                   // console.log("popupopen");
-                  console.log(event);
+                  // console.log(event);
                   if (
                     event.sourceTarget.feature.properties.ISO_A3 !== "-99" ||
                     event.sourceTarget.feature.properties.ADMIN === "Kosovo"
