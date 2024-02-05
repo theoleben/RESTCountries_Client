@@ -30,7 +30,7 @@ const Home = () => {
           flexWrap: "wrap",
           justifyContent: { xs: "center", md: "space-between" },
           mx: "5%",
-          mt: "50px",
+          my: "50px",
           gap: "50px",
         }}
       >

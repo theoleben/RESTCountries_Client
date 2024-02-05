@@ -2,7 +2,7 @@ import React from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { TreeView, TreeItem } from "@mui/x-tree-view";
-
+import { Box } from "@mui/material";
 import "./TreeViewComponent.css";
 
 const TreeViewComponent = (props) => {
@@ -62,13 +62,23 @@ const TreeViewComponent = (props) => {
   };
 
   return (
-    <TreeView
-      aria-label="Countries tree view"
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+    <Box
+      sx={{
+        border: "1px solid lightgrey",
+        borderRadius: "2rem",
+        width: "100%",
+        padding: "20px",
+        paddingRight: "10px",
+      }}
     >
-      {renderTree(props.data, index)}
-    </TreeView>
+      <TreeView
+        aria-label="Countries tree view"
+        defaultCollapseIcon={<ExpandMoreIcon />}
+        defaultExpandIcon={<ChevronRightIcon />}
+      >
+        {renderTree(props.data, index)}
+      </TreeView>
+    </Box>
   );
 };
 

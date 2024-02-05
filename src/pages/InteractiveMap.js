@@ -256,12 +256,36 @@ const InteractiveMap = () => {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
+          flexDirection: {
+            xs: "column",
+            sm: "row",
+          },
           width: "100%",
-          paddingTop: "100px",
+          my: {
+            xs: "50px",
+            sm: "0px",
+          },
+          // border: "1px solid green",
         }}
       >
-        <TreeViewComponent data={serializedMap} onClicked={handleItemClick} />
-        <Box sx={{ position: "relative", width: "60%" }}>
+        <Box
+          sx={{
+            width: { xs: "100%", sm: "40%" },
+            maxWidth: { xs: "100%", sm: "350px" },
+            padding: "10px",
+            // border: "1px solid orange",
+          }}
+        >
+          <TreeViewComponent data={serializedMap} onClicked={handleItemClick} />
+        </Box>
+        <Box
+          sx={{
+            position: "relative",
+            width: { xs: "100%", sm: "60%" },
+            padding: "10px",
+            // border: "1px solid blue",
+          }}
+        >
           <MapContainer
             // worldCopyJump={true}
             center={[51.505, -0.09]}
