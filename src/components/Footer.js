@@ -1,19 +1,15 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import "./Footer.css";
 import { Link, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
-const Footer = forwardRef((props, ref) => {
+const Footer = () => {
   // console.log(props);
   const theme = useTheme();
   //   console.log(theme.palette.primary.main);
 
   return (
-    <footer
-      style={{ backgroundColor: theme.palette.primary.main }}
-      className={`footer-pos${props.positioned ? " absolute" : ""}`}
-      ref={ref}
-    >
+    <footer style={{ backgroundColor: theme.palette.primary.main }}>
       {/* <Typography sx={{ backgroundColor: "primary.main" }}> */}
       <Typography sx={{ color: theme.palette.primary.contrastText }}>
         Created by
@@ -29,6 +25,6 @@ const Footer = forwardRef((props, ref) => {
       </Link>
     </footer>
   );
-});
+};
 
 export default Footer;

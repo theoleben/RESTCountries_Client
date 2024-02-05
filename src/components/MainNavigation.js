@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -21,7 +21,7 @@ const navItems = [
   // { name: "About", path: "about" },
 ];
 
-const MainNavigation = forwardRef((props, ref) => {
+const MainNavigation = () => {
   const [menuAnchor, setMenuAnchor] = useState(null);
 
   // console.log("boolean menuAnchor:", Boolean(menuAnchor));
@@ -39,7 +39,7 @@ const MainNavigation = forwardRef((props, ref) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} ref={ref}>
+    <Box>
       <AppBar position="static" className={classes.header} color="primary">
         <Toolbar component="nav">
           {/* MENU - START */}
@@ -116,6 +116,6 @@ const MainNavigation = forwardRef((props, ref) => {
       </AppBar>
     </Box>
   );
-});
+};
 
 export default MainNavigation;
