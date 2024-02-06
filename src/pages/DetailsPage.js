@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid, Paper } from "@mui/material";
 
 // import DUMMY_OBJ from "../dummy/country";
@@ -40,6 +40,11 @@ const DetailsPage = () => {
     geographyMap = geographyMapObject(country);
   }
 
+  useEffect(() => {
+    // console.log("useEffect");
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <Dummy /> */}
@@ -67,7 +72,12 @@ const DetailsPage = () => {
       )}
 
       {/* GRID */}
-      <Grid container spacing={0} justifyContent="space-evenly">
+      <Grid
+        container
+        spacing={0}
+        justifyContent="space-evenly"
+        sx={{ mb: "50px" }}
+      >
         <Grid
           item
           xs={12}

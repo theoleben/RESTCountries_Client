@@ -21,6 +21,7 @@ const Home = () => {
     sortedCountries.sort((a, b) => sortingByName(a.name.common, b.name.common));
     // console.log(countries);
   }
+
   return (
     <>
       <Hero />

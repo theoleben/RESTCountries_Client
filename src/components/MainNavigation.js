@@ -11,12 +11,12 @@ import {
 import { NavLink } from "react-router-dom";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import classes from "./MainNavigation.module.css";
+import "./MainNavigation.css";
 
 // Commented for now
 const navItems = [
-  { name: "Accueil", path: "" },
-  { name: "Carte interactive", path: "interactive-map" },
+  { name: "Home", path: "" },
+  { name: "Interactive map", path: "interactive-map" },
   // { name: "Statistics", path: "statistics" },
   // { name: "About", path: "about" },
 ];
@@ -27,31 +27,30 @@ const MainNavigation = () => {
   // console.log("boolean menuAnchor:", Boolean(menuAnchor));
 
   const openMenuHandler = (event) => {
-    console.log("openMenuHandler");
-    console.log(event);
-    console.log(event.currentTarget);
+    // console.log("openMenuHandler");
+    // console.log(event);
+    // console.log(event.currentTarget);
     setMenuAnchor(event.currentTarget);
   };
 
   const closeMenuHandler = () => {
-    console.log("closeMenuHandler");
+    // console.log("closeMenuHandler");
     setMenuAnchor(null);
   };
 
   return (
     <Box>
-      <AppBar position="static" className={classes.header} color="primary">
+      <AppBar position="static">
         <Toolbar component="nav">
           {/* MENU - START */}
-          {/* <Box sx={{ display: { sm: "block", md: "none" } }}> */}
-          <Box sx={{ display: "none" }}>
+          <Box sx={{ display: { sm: "block", md: "none" } }}>
+            {/* <Box sx={{ display: "none" }}> */}
             <IconButton
               size="large"
               aria-label="menu of the website"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={openMenuHandler}
-              // color="inherit"
               color="secondary"
             >
               <MenuIcon />
@@ -62,18 +61,18 @@ const MainNavigation = () => {
               keepMounted
               open={Boolean(menuAnchor)}
               onClose={closeMenuHandler}
-              // sx={{
-              //   display: { sm: "block", md: "none" },
-              // }}
               sx={{
-                display: "none",
+                display: { sm: "block", md: "none" },
               }}
+              // sx={{
+              //   display: "none",
+              // }}
             >
               {navItems.map((item) => (
                 <MenuItem key={item.name} onClick={closeMenuHandler}>
                   <NavLink
                     to={item.path}
-                    className={({ isActive }) => (isActive ? "activate" : "")}
+                    // className={({ isActive }) => (isActive ? "activate" : "")}
                   >
                     {item.name}
                   </NavLink>
@@ -98,7 +97,12 @@ const MainNavigation = () => {
           {/* TABLET - START */}
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.name} sx={{ mx: "20px" }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                key={item.name}
+                sx={{ mx: "20px" }}
+              >
                 <NavLink
                   to={item.path}
                   // Solution 1 - with only "active" class dynamically set in css - Research have to be done bc we have a different behavior in the course
