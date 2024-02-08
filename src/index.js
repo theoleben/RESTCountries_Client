@@ -6,7 +6,7 @@ import App from "./App";
 import { store } from "./redux/store";
 import { fetchCountries } from "./redux/slices/countriesSlice";
 
-store.dispatch(fetchCountries());
+// store.dispatch(fetchCountries());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -87,3 +87,68 @@ export const processGeoDataCountry = (geojson, country) => {
 
   return geoData;
 };
+
+export function debounce(func) {
+  var timer;
+  return function (event) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(func, 500, event);
+  };
+}
+
+export function calculatePosition(list, item) {
+  const listOffsetWidth = list.offsetWidth;
+  const itemOffsetWidth = item.offsetWidth;
+  // console.log("listOffsetWidth:", listOffsetWidth);
+  // console.log("itemOffsetWidth:", itemOffsetWidth);
+  const listStyle = getComputedStyle(list);
+  // console.log("listStyle.marginLeft:", listStyle.marginLeft);
+  // console.log("listStyle.marginRight:", listStyle.marginRight);
+  // console.log("listStyle.gap:", listStyle.gap);
+  // console.log(parseFloat(listStyle.marginLeft));
+  // const totalWidth =
+  //   listRef.current.offsetWidth +
+  //   parseFloat(listStyle.marginLeft) +
+  //   parseFloat(listStyle.marginRight);
+  // console.log("totalWidth:", totalWidth);
+  // console.log("totalWidth:", Math.round(totalWidth));
+
+  // With gap
+  const nbElement = Math.round(listOffsetWidth) / itemOffsetWidth;
+  // console.log("nbElement: ", nbElement);
+  const nbElementFloored = Math.floor(nbElement);
+  // console.log("nbElementFloored:", nbElementFloored);
+  const gap = (nbElementFloored - 1) * parseFloat(listStyle.gap);
+  // console.log("gap:", gap);
+
+  // Space
+  const space = Math.round(listOffsetWidth - gap) % itemOffsetWidth;
+  // console.log("space:", space);
+
+  // Without gap
+  const nbElement2 = Math.round(listOffsetWidth - gap) / itemOffsetWidth;
+  const nbElement2Floored = Math.floor(nbElement2);
+  // console.log("nbElement2Floored:", nbElement2Floored);
+
+  // Space around
+  const factor =
+    nbElement2Floored === 1
+      ? 0.5
+      : nbElement2Floored === 2
+      ? 0.25
+      : nbElement2Floored === 3
+      ? 0.16
+      : nbElement2Floored === 4
+      ? 0.125
+      : 0.1;
+  // console.log("factor:", factor);
+
+  const spaceRight = factor * space;
+  // console.log("spaceRight:", spaceRight);
+
+  // With margins
+  const finalSpaceRight = spaceRight + parseFloat(listStyle.marginRight);
+  // console.log("finalSpaceRight:", finalSpaceRight);
+
+  return finalSpaceRight;
+}
