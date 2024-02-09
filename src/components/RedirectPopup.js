@@ -15,8 +15,8 @@ const RedirectPopup = (props) => {
       }}
     >
       <Link to={`/details/${props.country.code}`}>
-        <Button variant="contained">
-          {`Voir la fiche du pays ${props.country.name}`}
+        <Button variant="contained" sx={{ textTransform: "none" }}>
+          {`View ${props.country.name} details`}
         </Button>
       </Link>
     </div>
